@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
     [SerializeField] protected int maxHealth;
-    [SerializeField] protected float shootRange;
-    protected int currentHealth;
+    [SerializeField] protected float shootRange;   
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
@@ -21,28 +20,24 @@ public class Character : MonoBehaviour
         
     }
 
-    protected void HealthAsigner(int currentHp, int maxHp)
+    public virtual int DealDamage(int hp,int dmg)
     {
-        currentHp = maxHp;
-        Debug.Log(currentHp + " = " + maxHp);
-    }
+        hp-= dmg;
 
-    public virtual void DealDamage(int hp,int dmg)
-    {
-        if(!(hp <= 0)){
-            hp -= dmg;
-        }
-        Debug.Log(hp + "heeyoo");
+        Debug.Log(hp + " heeyoo");
         
         if(hp <= 0)
         {
             hp = 0;
             Dying();
         }
+        return hp;
     }
 
     void Dying()
     {
         Debug.Log("GameOver");
     }
+
+    public abstract int CurrentHealth { get; }
 }
