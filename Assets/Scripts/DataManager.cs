@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager instance;
+    public static DataManager instance { get; private set; }
 
     string charName;
 
