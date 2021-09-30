@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
             if (projectile != null)
             {
                 projectile.transform.position = transform.position;
-                projectile.transform.rotation = transform.rotation;
+                projectile.transform.rotation = transform.localRotation;
                 projectile.SetActive(true);
             }
         }
@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour
 
     float AngleOfAim(Vector3 mousePos)
     {
-        return Mathf.Atan2(DirectionOfAim(mousePos).y, DirectionOfAim(mousePos).x) * Mathf.Rad2Deg;
+        return Mathf.Atan2(DirectionOfAim(mousePos).z, DirectionOfAim(mousePos).x) * Mathf.Rad2Deg;
     }
 
     Vector3 GetMouseWorldPos(Vector3 screenPos, Camera mainCam)
     {
         Vector3 pos = mainCam.ScreenToWorldPoint(screenPos);
-        pos.z = 0;
+        pos.y = 0;
         return pos;
     }
 
