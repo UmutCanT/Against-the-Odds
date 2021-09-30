@@ -39,5 +39,5 @@ public abstract class Character : MonoBehaviour
         Debug.Log("GameOver");
     }
 
-    public abstract int CurrentHealth { get; }
+    public abstract int CurrentHealth { get; set; }
 }

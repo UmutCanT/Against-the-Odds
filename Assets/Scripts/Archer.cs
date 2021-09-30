@@ -6,7 +6,7 @@ public class Archer : PlayerCharacter
 {
     int critMultiplier = 3;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         currentHealth = maxHealth;
         Debug.Log("Player " + currentHealth);

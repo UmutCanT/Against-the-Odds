@@ -12,6 +12,11 @@ public class Enemy : Character
         {
             return currentHealth;
         }
+
+        set
+        {
+            currentHealth = value;
+        }
     }
 
     // Start is called before the first frame update

@@ -22,6 +22,11 @@ public class PlayerCharacter : Character
         {
             return currentHealth;
         }
+
+        set
+        {
+            currentHealth = value;
+        }
     }
 
     private void Start()

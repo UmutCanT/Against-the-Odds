@@ -6,13 +6,21 @@ public class DataManager : MonoBehaviour
 {
     public static DataManager instance { get; private set; }
 
-    string charName;
+    int charId;
 
-    public string CharName
+    /// <summary>
+    /// Returns or sets the character ID according to choosing section from main menu
+    /// </summary>
+    public int CharID
     {
         set
         {
-            charName = value;
+            charId = value;
+        }
+
+        get
+        {
+            return charId;
         }
     }
 
@@ -37,6 +45,5 @@ public class DataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(charName);
     }
 }

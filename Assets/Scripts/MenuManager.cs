@@ -26,23 +26,23 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    public void GetCharName(string name)
+    public void GetCharName(int id)
     {
-        DataManager.instance.CharName = name;
+        DataManager.instance.CharID = id;
 
-        switch (name)
+        switch (id)
         {
-            case "Archer":
+            case 0:
                 charChooser[0].interactable = false;
                 charChooser[1].interactable = true;
                 charChooser[2].interactable = true;
                 break;
-            case "Wizard":
+            case 1:
                 charChooser[0].interactable = true;
                 charChooser[1].interactable = false;
                 charChooser[2].interactable = true;
                 break;
-            case "Paladin":
+            case 2:
                 charChooser[0].interactable = true;
                 charChooser[1].interactable = true;
                 charChooser[2].interactable = false;

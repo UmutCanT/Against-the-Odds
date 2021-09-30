@@ -463,8 +463,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1030068279}
   - {fileID: 678390120}
+  - {fileID: 1030068279}
   - {fileID: 1510778412}
   m_Father: {fileID: 1259256700}
   m_RootOrder: 1
@@ -603,7 +603,7 @@ RectTransform:
   m_Children:
   - {fileID: 1137308019}
   m_Father: {fileID: 598642398}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -657,7 +657,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1259256701}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GetCharName
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1246,7 +1246,7 @@ RectTransform:
   m_Children:
   - {fileID: 760883421}
   m_Father: {fileID: 598642398}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1300,11 +1300,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1259256701}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GetCharName
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: Wizard
           m_BoolArgument: 0
@@ -2089,11 +2089,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1259256701}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GetCharName
-        m_Mode: 5
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: Paladin
           m_BoolArgument: 0
