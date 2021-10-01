@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
     {
         if (gameObject.activeInHierarchy)
         {
-            transform.position += transform.right * 10 * Time.deltaTime;
+            transform.position += transform.right * 30 * Time.deltaTime;
         }
     }
 }

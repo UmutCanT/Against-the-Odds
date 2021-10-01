@@ -6,12 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     GameManager gameManager;
     float moveSpeed;
+    Transform aimTransform;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         moveSpeed = GetComponent<PlayerCharacter>().MoveSpeed;
+        aimTransform = transform.Find("Aim");
     }
 
     // Update is called once per frame
@@ -20,7 +22,7 @@ public class PlayerController : MonoBehaviour
         if (!gameManager.IsGameOver)
         {
             Vector3 mousePos = GetMouseWorldPos(Input.mousePosition, Camera.main);
-            transform.eulerAngles = new Vector3(0, AngleOfAim(mousePos), 0);
+            aimTransform.eulerAngles = new Vector3(0, AngleOfAim(mousePos), 0);
             PlayerMovement();
             Shooting();
         }
@@ -42,8 +44,8 @@ public class PlayerController : MonoBehaviour
             GameObject projectile = ObjectPooling.instance.GetPooledObjects(ObjectPooling.instance.projectiles, ObjectPooling.instance.AmountofObject(2));
             if (projectile != null)
             {
-                projectile.transform.position = transform.position;
-                projectile.transform.rotation = transform.localRotation;
+                projectile.transform.position = aimTransform.position;
+                projectile.transform.rotation = aimTransform.rotation;
                 projectile.SetActive(true);
             }
         }
@@ -51,13 +53,14 @@ public class PlayerController : MonoBehaviour
 
     float AngleOfAim(Vector3 mousePos)
     {
-        return Mathf.Atan2(DirectionOfAim(mousePos).z, DirectionOfAim(mousePos).x) * Mathf.Rad2Deg;
+        return Mathf.Atan2(-DirectionOfAim(mousePos).z, DirectionOfAim(mousePos).x) * Mathf.Rad2Deg;
     }
 
     Vector3 GetMouseWorldPos(Vector3 screenPos, Camera mainCam)
     {
         Vector3 pos = mainCam.ScreenToWorldPoint(screenPos);
-        pos.y = 0;
+        pos.y -= 10;
+        pos.z += 10;
         return pos;
     }
 
