@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
     GameManager gameManager;
     float moveSpeed;
     Transform aimTransform;
+    Vector3 camOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         moveSpeed = GetComponent<PlayerCharacter>().MoveSpeed;
+        camOffset = FindObjectOfType<CamHandler>().GetComponent<CamHandler>().CamOffset;
         aimTransform = transform.Find("Aim");
     }
 
@@ -59,8 +61,7 @@ public class PlayerController : MonoBehaviour
     Vector3 GetMouseWorldPos(Vector3 screenPos, Camera mainCam)
     {
         Vector3 pos = mainCam.ScreenToWorldPoint(screenPos);
-        pos.y -= 10;
-        pos.z += 10;
+        pos -= camOffset;       
         return pos;
     }
 
