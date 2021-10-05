@@ -4,32 +4,44 @@ using UnityEngine;
 
 public class Wizard : PlayerCharacter
 {
-   
+    Coroutine enchantCountdown;
+    int enchantMultiplier = 2;
+    bool hasEnchant;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        hasEnchant = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    //public override int DealDamage(int hp, int dmg)
-    //{
-    //    if (Random.Range(0,10) <= 2)
-    //    {
-    //        StartCoroutine(Toxic());
-    //    }
+    public override int DealDamage()
+    {
+        if (Random.Range(0, 10) <= 1)
+        {
+            if(hasEnchant != true)
+            {
+                damageAmount *= enchantMultiplier;
+                hasEnchant = true;
+            }           
+            if(enchantCountdown != null)
+            {
+                StopCoroutine(enchantCountdown);
+            }
+            enchantCountdown = StartCoroutine(EnchantedPowerCoroutine());
+        }
 
-    //    return base.DealDamage(hp, dmg);
-    //}
+        return base.DealDamage();
+    }
 
-    //IEnumerator Toxic(GameObject enemy)
-    //{
-    //    yield return new WaitForSeconds(5);
-    //    enemy.GetComponent<Enemy>().DealDamage(currentHealth, 5);
-    //}
+    IEnumerator EnchantedPowerCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        damageAmount /= enchantMultiplier;
+        hasEnchant = false;
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamHandler : MonoBehaviour
 {
-    Vector3 offset = new(0, 10, -2);
+    Vector3 offset = new Vector3(0, 10, -2);
     Transform playerTra;
 
     public Vector3 CamOffset

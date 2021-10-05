@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class Paladin : PlayerCharacter
 {
-    // Start is called before the first frame update
-    void Start()
+    int healAmount = 5;
+
+    void Awake()
     {
-       
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public override int DealDamage(int hp, int dmg)
+    public override int DealDamage()
     {
-        Heal(dmg);
-        return base.DealDamage(hp, dmg);
+        Heal(healAmount);
+        return base.DealDamage();
     }
 
     void Heal(int healAmount)
     {
-        if(Random.Range(0,10) <= 2)
+        if (Random.Range(0, 10) <= 2)
         {
             currentHealth += healAmount;
-        }      
+        }
     }
 }

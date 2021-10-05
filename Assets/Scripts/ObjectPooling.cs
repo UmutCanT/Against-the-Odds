@@ -7,9 +7,13 @@ public class ObjectPooling : MonoBehaviour
     public static ObjectPooling instance;
 
     public List<GameObject> projectiles = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
+
     [SerializeField] GameObject projectile;
-    readonly int projectileAmount = 30;
-    readonly int enemyAmount = 30;
+    [SerializeField] GameObject enemy;
+
+    readonly int projectileAmount = 15;
+    readonly int enemyAmount = 10;
 
     void Awake()
     {
@@ -18,7 +22,8 @@ public class ObjectPooling : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {     
+        CreatingObjectsToPool(enemies, enemy, enemyAmount);
         CreatingObjectsToPool(projectiles, projectile, projectileAmount);
     }
 

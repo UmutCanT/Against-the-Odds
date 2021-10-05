@@ -23,14 +23,20 @@ public class Enemy : Character
     void Start()
     {
         currentHealth = maxHealth;
-        Debug.Log("Enemy " + currentHealth);
-        currentHealth = DealDamage(maxHealth, damageAmount);
-        Debug.Log("Enemy " + currentHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Dying(gameObject);
+        }
+
+        if (!gameObject.activeInHierarchy)
+        {
+            currentHealth = maxHealth;
+        }
     }
 }

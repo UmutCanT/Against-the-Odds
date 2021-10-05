@@ -20,23 +20,22 @@ public abstract class Character : MonoBehaviour
         
     }
 
-    public virtual int DealDamage(int hp,int dmg)
+    public virtual int DealDamage()
     {
-        hp-= dmg;
-
-        Debug.Log(hp + " heeyoo");
-        
-        if(hp <= 0)
-        {
-            hp = 0;
-            Dying();
-        }
-        return hp;
+        return damageAmount;
     }
 
-    void Dying()
+    protected void Dying(GameObject character)
     {
-        Debug.Log("GameOver");
+        if (character.CompareTag("Player"))
+        {
+            Debug.Log("GameOver");
+        }
+
+        if (character.CompareTag("Enemy"))
+        {
+            gameObject.SetActive(false);
+        }    
     }
 
     public abstract int CurrentHealth { get; set; }
