@@ -49,6 +49,14 @@ public class PlayerCharacter : Character
         }
     }
 
+    protected void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            currentHealth = 0;
+        }
+    }
+
     protected void UiHandlerForPlayer(int currentHp)
     {
         UIManager.instance.HealthUIHandler(currentHp);

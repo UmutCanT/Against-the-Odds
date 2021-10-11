@@ -126,5 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
-  maxHealth: 150
-  shootRange: 0
+  maxHealth: 75

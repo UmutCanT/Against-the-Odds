@@ -17,6 +17,7 @@ public class Paladin : PlayerCharacter
         if (Random.Range(0, 10) <= 2)
         {
             currentHealth += healAmount;
+            UIManager.instance.HealthUIHandler(currentHealth);
         }
     }
 }
