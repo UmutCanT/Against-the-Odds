@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class Archer : PlayerCharacter
 {
-    int critMultiplier = 3;
+    readonly int critMultiplier = 3;
+
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        UiHandlerForPlayer(currentHealth);
     }
 
     public override int DealDamage()

@@ -5,18 +5,15 @@ using UnityEngine;
 public class Wizard : PlayerCharacter
 {
     Coroutine enchantCountdown;
-    int enchantMultiplier = 2;
+    readonly int enchantMultiplier = 2;
     bool hasEnchant;
 
     // Start is called before the first frame update
     void Start()
     {
         hasEnchant = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        currentHealth = maxHealth;
+        UiHandlerForPlayer(currentHealth);
     }
 
     public override int DealDamage()

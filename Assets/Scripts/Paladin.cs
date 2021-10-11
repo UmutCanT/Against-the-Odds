@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class Paladin : PlayerCharacter
 {
-    int healAmount = 5;
+    readonly int healAmount = 5;
 
-    void Awake()
+    void Start()
     {
         currentHealth = maxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        UiHandlerForPlayer(currentHealth);
     }
 
     public override int DealDamage()

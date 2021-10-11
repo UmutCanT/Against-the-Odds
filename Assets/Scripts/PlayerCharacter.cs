@@ -29,6 +29,11 @@ public class PlayerCharacter : Character
         }
     }
 
+    protected void UiHandlerForPlayer(int currentHp)
+    {
+        UIManager.instance.HealthUIHandler(currentHp);
+    }
+
     private void Start()
     {
        
