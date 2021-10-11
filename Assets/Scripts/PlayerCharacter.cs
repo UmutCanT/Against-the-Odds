@@ -53,6 +53,6 @@ public class PlayerCharacter : Character
     protected override void Dying()
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().IsGameOver = true;
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 1f);
     }
 }

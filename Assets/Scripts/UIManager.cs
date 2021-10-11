@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         return textToFormat.name switch
         {
             "PlayerHp" => "HP: {0}",
-            "Score" => "Score: {0}",
+            "Score" => "Score:  {0}",
             _ => default
         };
     }
