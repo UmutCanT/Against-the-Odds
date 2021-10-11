@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         ScoreUpdate(score);
         GameObject player = Instantiate(characters[DataManager.instance.CharID], playerSpawnPos, Quaternion.identity);
         player.AddComponent<PlayerController>();
+        InvokeRepeating(nameof(SpawnEnemy), spawnDelay, spawnInterval);
     }
 
     // Update is called once per frame
