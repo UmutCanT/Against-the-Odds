@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] protected int damageAmount;
+    [SerializeField] protected int maxHealth; 
+
+    public virtual int DealDamage()
     {
-        
+        return damageAmount;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected abstract void Dying();
+ 
+    public abstract int CurrentHealth { get; set; }
 }
