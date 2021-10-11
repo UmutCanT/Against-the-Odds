@@ -16,7 +16,7 @@ public class PlayerCharacter : Character
         }
     }
 
-    override public int CurrentHealth
+    public override int CurrentHealth
     {
         get
         {
@@ -29,18 +29,30 @@ public class PlayerCharacter : Character
         }
     }
 
+    // Start is called before the first frame update
+    protected void Start()
+    {
+        currentHealth = maxHealth;
+        UiHandlerForPlayer(currentHealth);
+    }
+
+    protected void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            Dying();
+        }
+    }
+
     protected void UiHandlerForPlayer(int currentHp)
     {
         UIManager.instance.HealthUIHandler(currentHp);
     }
 
-    private void Start()
+    protected override void Dying()
     {
-       
-    }
-
-    private void Update()
-    {
-       
+        GameObject.Find("GameManager").GetComponent<GameManager>().IsGameOver = true;
+        Destroy(gameObject, 1.5f);
     }
 }

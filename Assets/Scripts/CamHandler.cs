@@ -6,6 +6,7 @@ public class CamHandler : MonoBehaviour
 {
     Vector3 offset = new Vector3(0, 10, -2);
     Transform playerTra;
+    GameManager gameManager;
 
     public Vector3 CamOffset
     {
@@ -18,16 +19,19 @@ public class CamHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!playerTra)
+        if (!gameManager.IsGameOver)
         {
-            playerTra = GameObject.FindGameObjectWithTag("Player").transform;
-        }
-        transform.position = playerTra.position + offset;
+            if (!playerTra)
+            {
+                playerTra = GameObject.FindGameObjectWithTag("Player").transform;
+            }
+            transform.position = playerTra.position + offset;
+        }       
     }
 }

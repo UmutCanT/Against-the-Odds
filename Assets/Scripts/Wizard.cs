@@ -6,16 +6,8 @@ public class Wizard : PlayerCharacter
 {
     Coroutine enchantCountdown;
     readonly int enchantMultiplier = 2;
-    bool hasEnchant;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        hasEnchant = false;
-        currentHealth = maxHealth;
-        UiHandlerForPlayer(currentHealth);
-    }
-
+    bool hasEnchant = false;
+  
     public override int DealDamage()
     {
         if (Random.Range(0, 10) <= 1)

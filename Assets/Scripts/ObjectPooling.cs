@@ -7,13 +7,16 @@ public class ObjectPooling : MonoBehaviour
     public static ObjectPooling instance;
 
     public List<GameObject> projectiles = new List<GameObject>();
+    public List<GameObject> flames = new List<GameObject>();
     public List<GameObject> enemies = new List<GameObject>();
 
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject fire;
     [SerializeField] GameObject enemy;
 
     readonly int projectileAmount = 15;
-    readonly int enemyAmount = 10;
+    readonly int fireAmount = 15;
+    readonly int enemyAmount = 2;
 
     void Awake()
     {
@@ -25,12 +28,7 @@ public class ObjectPooling : MonoBehaviour
     {     
         CreatingObjectsToPool(enemies, enemy, enemyAmount);
         CreatingObjectsToPool(projectiles, projectile, projectileAmount);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CreatingObjectsToPool(flames, fire, fireAmount);
     }
 
     void CreatingObjectsToPool(List<GameObject> listToHold, GameObject obj, int amount)
@@ -62,6 +60,7 @@ public class ObjectPooling : MonoBehaviour
         {
             1 => enemyAmount,
             2 => projectileAmount,
+            3 => fireAmount,
             _ => default
         };
     }

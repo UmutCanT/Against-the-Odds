@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4390204588206974908}
   - component: {fileID: 4390204588206974909}
   - component: {fileID: 4390204588206974905}
-  m_Layer: 3
-  m_Name: Projectile
+  m_Layer: 6
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 74116621039540047a1eea20e309bdf7, type: 2}
+  - {fileID: 2100000, guid: 247a93f2a802df644b64b3ec4c60fb0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5fb6d300c71e143b81051158450961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 70
+  projectileSpeed: 30

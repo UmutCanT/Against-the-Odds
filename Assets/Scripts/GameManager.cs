@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour
 
     //Enemy Spawn variables
     readonly float spawnInterval = 2f;
-    readonly float spawnDelay = 2f;
+    readonly float spawnDelay = 5f;
     readonly float xRangeEnemy = 19f;
     readonly float zRangeEnemy = 18f;
 
     bool isGameOver = false;
+
+    int score;
 
     Vector3 playerSpawnPos = Vector3.up;
 
@@ -33,6 +35,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
+        ScoreUpdate(score);
         if (!isGameOver)
         {
 #if UNITY_EDITOR
@@ -51,8 +55,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver)
         {
-            CancelInvoke(nameof(SpawnEnemy));
-            ObjectPooling.instance.DestroyObjects(ObjectPooling.instance.enemies);
+            GameOver();
         }
     }
 
@@ -67,8 +70,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ScoreUpdate(int add)
+    {
+        score += add;
+        UIManager.instance.ScoreUIHandler(score);
+    }
+
     void GameOver()
     {
-
+        CancelInvoke(nameof(SpawnEnemy));
+        ObjectPooling.instance.DestroyObjects(ObjectPooling.instance.enemies);
+        ObjectPooling.instance.DestroyObjects(ObjectPooling.instance.flames);
+        ObjectPooling.instance.DestroyObjects(ObjectPooling.instance.projectiles);
+        StartCoroutine(UIManager.instance.GameOverUI(score));
     }
 }

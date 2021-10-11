@@ -5,8 +5,11 @@ using UnityEngine;
 public class Enemy : Character
 {
     int currentHealth;
+    int heldPoints = 5;
+    readonly float fireDelay = 2f;
+    float fireInterval;
 
-    override public int CurrentHealth
+    public override int CurrentHealth
     {
         get
         {
@@ -23,20 +26,41 @@ public class Enemy : Character
     void Start()
     {
         currentHealth = maxHealth;
+        fireInterval = Random.Range(2f, 5f);
+        InvokeRepeating(nameof(Fire), fireDelay, fireInterval);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            CancelInvoke(nameof(Fire));
+        }
+
         if(currentHealth <= 0)
         {
             currentHealth = 0;
-            Dying(gameObject);
+            Dying();
         }
+    }
 
-        if (!gameObject.activeInHierarchy)
+    protected override void Dying()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUpdate(heldPoints);
+        gameObject.SetActive(false);
+        currentHealth = maxHealth;
+    }
+
+    void Fire()
+    {
+        GameObject fire = ObjectPooling.instance.GetPooledObjects(ObjectPooling.instance.flames, ObjectPooling.instance.AmountofObject(3));
+        if (fire != null)
         {
-            currentHealth = maxHealth;
+            fire.transform.position = transform.position;
+            Vector3 lookDirection = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
+            fire.transform.eulerAngles = new Vector3(0, Mathf.Atan2(-lookDirection.z, lookDirection.x) * Mathf.Rad2Deg, 0);
+            fire.SetActive(true);
         }
     }
 }

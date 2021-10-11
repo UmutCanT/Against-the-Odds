@@ -5,8 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
-    [SerializeField] protected int maxHealth;
-    [SerializeField] protected float shootRange;   
+    [SerializeField] protected int maxHealth; 
 
     // Start is called before the first frame update
     void Awake()
@@ -25,18 +24,7 @@ public abstract class Character : MonoBehaviour
         return damageAmount;
     }
 
-    protected void Dying(GameObject character)
-    {
-        if (character.CompareTag("Player"))
-        {
-            Debug.Log("GameOver");
-        }
-
-        if (character.CompareTag("Enemy"))
-        {
-            gameObject.SetActive(false);
-        }    
-    }
-
+    protected abstract void Dying();
+ 
     public abstract int CurrentHealth { get; set; }
 }

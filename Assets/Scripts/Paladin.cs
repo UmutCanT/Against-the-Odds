@@ -6,12 +6,6 @@ public class Paladin : PlayerCharacter
 {
     readonly int healAmount = 5;
 
-    void Start()
-    {
-        currentHealth = maxHealth;
-        UiHandlerForPlayer(currentHealth);
-    }
-
     public override int DealDamage()
     {
         Heal(healAmount);
