@@ -37,17 +37,8 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         ScoreUpdate(score);
-        if (!isGameOver)
-        {
-#if UNITY_EDITOR
-            GameObject player = Instantiate(characters[1], playerSpawnPos, Quaternion.identity);
-            player.AddComponent<PlayerController>();
-            InvokeRepeating(nameof(SpawnEnemy), spawnDelay, spawnInterval);
-#else
-            GameObject player = Instantiate(characters[DataManager.instance.CharID], playerSpawnPos, Quaternion.identity);
-            player.AddComponent<PlayerController>();
-#endif
-        }
+        GameObject player = Instantiate(characters[DataManager.instance.CharID], playerSpawnPos, Quaternion.identity);
+        player.AddComponent<PlayerController>();
     }
 
     // Update is called once per frame
