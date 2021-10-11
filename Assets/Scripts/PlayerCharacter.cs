@@ -20,6 +20,10 @@ public class PlayerCharacter : Character
     {
         get
         {
+            if (currentHealth < 0)
+            {
+                return 0;
+            }
             return currentHealth;
         }
 

@@ -14,9 +14,9 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] GameObject fire;
     [SerializeField] GameObject enemy;
 
-    readonly int projectileAmount = 15;
-    readonly int fireAmount = 15;
-    readonly int enemyAmount = 2;
+    readonly int projectileAmount = 10;
+    readonly int fireAmount = 20;
+    readonly int enemyAmount = 7;
 
     void Awake()
     {
