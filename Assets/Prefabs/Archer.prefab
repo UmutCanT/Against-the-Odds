@@ -143,7 +143,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 25
   maxHealth: 75
-  shootRange: 0
   moveSpeed: 50
 --- !u!54 &5597643217678969012
 Rigidbody:
