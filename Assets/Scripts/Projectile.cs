@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] float projectileSpeed;
 
+    readonly float bulletRange = 20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class Projectile : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             transform.position += transform.right * projectileSpeed * Time.deltaTime;
+            CheckRange();
         }
     }
 
@@ -38,5 +41,18 @@ public class Projectile : MonoBehaviour
             UIManager.instance.HealthUIHandler(other.gameObject.GetComponent<PlayerCharacter>().CurrentHealth);
         }
         gameObject.SetActive(false);
+    }
+
+    void CheckRange()
+    {
+        if (transform.position.x >= bulletRange || transform.position.x <= -bulletRange)
+        {
+            gameObject.SetActive(false);
+        } 
+        
+        if (transform.position.z >= bulletRange || transform.position.z <= -bulletRange)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
