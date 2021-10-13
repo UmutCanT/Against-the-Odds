@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCharacter : Character
+public class PlayerCharacter : Character // Inheritance
 {
     [SerializeField] protected float moveSpeed;
 
@@ -16,7 +16,7 @@ public class PlayerCharacter : Character
         }
     }
 
-    public override int CurrentHealth
+    public override int CurrentHealth // Encapsulation
     {
         get
         {
@@ -62,7 +62,7 @@ public class PlayerCharacter : Character
         UIManager.instance.HealthUIHandler(currentHp);
     }
 
-    protected override void Dying()
+    protected override void Dying() // Polymorphism
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().IsGameOver = true;
         Destroy(gameObject, 1f);

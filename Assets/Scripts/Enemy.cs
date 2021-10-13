@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character
+public class Enemy : Character // Inheritance
 {
     int currentHealth;
-    int heldPoints = 5;
+    readonly int heldPoints = 5;
     readonly float fireDelay = 2f;
     float fireInterval;
 
-    public override int CurrentHealth
+    public override int CurrentHealth // Encapsulation
     {
         get
         {
@@ -45,7 +45,7 @@ public class Enemy : Character
         }
     }
 
-    protected override void Dying()
+    protected override void Dying() // Polymorphism
     {
         GameObject.Find("GameManager").GetComponent<GameManager>().ScoreUpdate(heldPoints);
         gameObject.SetActive(false);

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static DataManager instance { get; private set; }
+    public static DataManager instance { get; private set; } // Encapsulation
 
     int charId;
 
     /// <summary>
     /// Returns or sets the character ID according to choosing section from main menu
     /// </summary>
-    public int CharID
+    public int CharID // Encapsulation
     {
         set
         {
@@ -34,16 +34,5 @@ public class DataManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wizard : PlayerCharacter
+public class Wizard : PlayerCharacter // Inheritance
 {
     Coroutine enchantCountdown;
     readonly int enchantMultiplier = 2;
     bool hasEnchant = false;
   
-    public override int DealDamage()
+    public override int DealDamage() // Polymorphism
     {
         if (Random.Range(0, 10) <= 1)
         {

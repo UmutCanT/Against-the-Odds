@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Paladin : PlayerCharacter
+public class Paladin : PlayerCharacter // Inheritance
 {
     readonly int healAmount = 5;
 
-    public override int DealDamage()
+    public override int DealDamage() // Polymorphism
     {
         Heal(healAmount);
         return base.DealDamage();

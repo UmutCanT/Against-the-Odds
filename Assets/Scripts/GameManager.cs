@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     Vector3 playerSpawnPos = Vector3.up;
 
-    public bool IsGameOver
+    public bool IsGameOver // Encapsulation
     {
         get
         {
